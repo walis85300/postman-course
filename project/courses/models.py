@@ -14,6 +14,7 @@ class Course(models.Model):
     name = models.CharField(max_length=250)
     description = models.TextField()
     teachers = models.ManyToManyField("courses.Teacher", blank=True)
+    ranking = models.DecimalField(max_digits=3, decimal_places=2, default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -57,3 +58,12 @@ class Video(models.Model):
 
     def __str__(self):
         return f'{self.provider} {self.material.title}'
+
+
+class Comment(models.Model):
+    material = models.ForeignKey(
+        Material, related_name='comments', on_delete=models.CASCADE
+    )
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

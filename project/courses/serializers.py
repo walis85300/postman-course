@@ -20,7 +20,14 @@ class CourseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Course
-        fields = ('id', 'description', 'teachers', 'created_at', 'updated_at')
+        fields = (
+            'id',
+            'description',
+            'teachers',
+            'ranking',
+            'created_at',
+            'updated_at',
+        )
 
 
 class VideoSerializer(serializers.ModelSerializer):
@@ -35,3 +42,9 @@ class MaterialSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Material
         fields = ('id', 'title', 'description', 'videos')
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Comment
+        fields = '__all__'
