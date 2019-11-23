@@ -54,7 +54,9 @@ class MaterialViewSet(viewsets.ModelViewSet):
     @action(methods=['get'], detail=True)
     def comments(self, request, pk=None, *args, **kwargs):
         material = self.get_object()
-        queryset = Comment.objects.filter(material=material)
+        queryset = Comment.objects.filter(material=material).order_by(
+            '-created_at'
+        )
         page = self.paginate_queryset(queryset)
         if page is not None:
             serializer = self.get_serializer(page, many=True)
@@ -68,9 +70,33 @@ class CommentViewSet(viewsets.ModelViewSet):
     model = Comment
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def list(self, request, *args, **kwargs):
         return Response(
             {'Error': 'Action not allowed'},
             status=status.HTTP_405_METHOD_NOT_ALLOWED,
         )
+
+    def _retrieve(self, instance):
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
+
+    @action(methods=['post'], detail=True)
+    def like(self, request, pk=None, *args, **kwargs):
+        comment = self.get_object()
+        likes = comment.likes
+        comment.likes = likes + 1
+        comment.save()
+
+        return self._retrieve(comment)
+
+    @action(methods=['post'], detail=True)
+    def dislike(self, request, pk=None, *args, **kwargs):
+        comment = self.get_object()
+        likes = comment.likes
+        comment.likes = likes - 1
+        comment.save()
+
+        return self._retrieve(comment)

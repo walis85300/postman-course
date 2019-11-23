@@ -65,5 +65,6 @@ class Comment(models.Model):
         Material, related_name='comments', on_delete=models.CASCADE
     )
     content = models.TextField()
+    likes = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

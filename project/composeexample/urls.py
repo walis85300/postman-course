@@ -26,6 +26,7 @@ router.register(
     r'private/courses', views.PrivateCoursesViewSet, basename='private_courses'
 )
 router.register(r'materials', views.MaterialViewSet, basename='materials')
+router.register(r'comments', views.CommentViewSet, basename='comments')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
