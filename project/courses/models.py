@@ -15,6 +15,7 @@ class Course(models.Model):
     description = models.TextField()
     teachers = models.ManyToManyField("courses.Teacher", blank=True)
     ranking = models.DecimalField(max_digits=3, decimal_places=2, default=0)
+    badge = models.ImageField(upload_to='badges', null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

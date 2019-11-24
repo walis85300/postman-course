@@ -31,11 +31,25 @@ class CoursesViewSet(viewsets.ModelViewSet):
     ordering = ['created_at']
 
     def get_serializer_class(self):
-        serializers = {
-            'retrieve': CourseDetailSerializer,
-        }
+        serializers = {'retrieve': CourseDetailSerializer}
 
         return serializers.get(self.action, self.serializer_class)
+
+    @action(methods=['post'], detail=True)
+    def upload_badge(self, request, pk=None, *args, **kwargs):
+        course = self.get_object()
+
+        badge_file = request.FILES['badge']
+
+        course.badge = badge_file
+        course.save()
+
+        serializer = CourseDetailSerializer(course)
+
+        return Response(
+            {'ok': 'Uploaded', 'data': serializer.data},
+            status=status.HTTP_201_CREATED,
+        )
 
 
 class PrivateCoursesViewSet(CoursesViewSet):
