@@ -13,6 +13,7 @@ from courses.serializers import (
     CourseSerializer,
     MaterialSerializer,
     CommentSerializer,
+    CourseDetailSerializer,
 )
 
 
@@ -28,6 +29,13 @@ class CoursesViewSet(viewsets.ModelViewSet):
     ]
     ordering_fields = ['created_at', 'ranking']
     ordering = ['created_at']
+
+    def get_serializer_class(self):
+        serializers = {
+            'retrieve': CourseDetailSerializer,
+        }
+
+        return serializers.get(self.action, self.serializer_class)
 
 
 class PrivateCoursesViewSet(CoursesViewSet):

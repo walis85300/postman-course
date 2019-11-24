@@ -44,6 +44,22 @@ class MaterialSerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'description', 'videos')
 
 
+class CourseDetailSerializer(serializers.ModelSerializer):
+    materials = MaterialSerializer(many=True)
+
+    class Meta:
+        model = models.Course
+        fields = (
+            'id',
+            'description',
+            'teachers',
+            'ranking',
+            'materials',
+            'created_at',
+            'updated_at',
+        )
+
+
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Comment
