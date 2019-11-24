@@ -14,6 +14,7 @@ from courses.serializers import (
     MaterialSerializer,
     CommentSerializer,
     CourseDetailSerializer,
+    MaterialSerializer,
 )
 
 
@@ -50,6 +51,23 @@ class CoursesViewSet(viewsets.ModelViewSet):
             {'ok': 'Uploaded', 'data': serializer.data},
             status=status.HTTP_201_CREATED,
         )
+
+    @action(methods=['post'], detail=True)
+    def create_materials(self, request, pk=None, *args, **kwargs):
+        course = self.get_object()
+        materials = request.data
+        for material in materials:
+            serializer = MaterialSerializer(
+                data=material, context={'course': course}
+            )
+            serializer.is_valid(raise_exception=True)
+            m = serializer.save()
+            m.course = course
+            m.save()
+
+        course_serializer = CourseDetailSerializer(course)
+
+        return Response(course_serializer.data, status=status.HTTP_201_CREATED)
 
 
 class PrivateCoursesViewSet(CoursesViewSet):
