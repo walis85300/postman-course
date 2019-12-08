@@ -1,4 +1,5 @@
 
+
 # This is the API for Postman Course
 
 It is a simple version of an API builded with Django and Django Rest Framework
@@ -17,4 +18,12 @@ using Docker.
 - Execute `docker-compose up -d`: This command starts a local server with the API running over 8000 port.
 - Get inside the docker container executing `docker exec -it postman-course_web_1 bash`
 - Inside the docker container execute `source admin_info.sh`
-- Run the migrations `python manage.py runscript migrations.admin_migration`
+
+# How to use it
+Once the development server is running you can access to the [Django Admin](http://localhost:8000/admin/), there you can perform CRUD operations over the resources. 
+
+
+# What can you do with it?
+## ANYTHING YOU WANT 
+
+This code is free, use it, change it, even you can send me pull requests. Maybe a pull requests with some fixtures of Courses and Materials.
