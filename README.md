@@ -17,6 +17,7 @@ using Docker.
 - Install Docker and Docker Compose
 - Execute `docker-compose up -d`: This command starts a local server with the API running over 8000 port.
 - Get inside the docker container executing `docker exec -it postman-course_web_1 bash`
+- Run migrations `python managa.py migrate`
 - Inside the docker container execute `source admin_info.sh`
 
 # How to use it
