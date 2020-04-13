@@ -1,0 +1,23 @@
+[{
+    "model": "courses.Material",
+    "fields": {
+      "course_id": 4,
+      "title": "Presentacion de Docker",
+      "description": "Exercitation veniam aliqua aliquip cupidatat ipsum anim. Dolore amet minim officia sint labore nisi dolor ullamco ipsum fugiat anim magna. Amet qui non pariatur est velit reprehenderit commodo. Consequat adipisicing ex do eiusmod fugiat Lorem. Non sunt nisi aute veniam sunt adipisicing minim aliqua in eiusmod eu ad.",
+      "is_active": "True",
+      "created_at": "2020-04-01T15:56:47.627038-06:00",
+      "updated_at": "2020-04-01T15:56:47.627038-06:00"
+    }
+  },
+  {
+    "model": "courses.Material",
+    "fields": {
+      "course_id": 6,
+      "title": "Presentacion Photshop",
+      "description": "Exercitation veniam aliqua aliquip cupidatat ipsum anim. Dolore amet minim officia sint labore nisi dolor ullamco ipsum fugiat anim magna. Amet qui non pariatur est velit reprehenderit commodo. Consequat adipisicing ex do eiusmod fugiat Lorem. Non sunt nisi aute veniam sunt adipisicing minim aliqua in eiusmod eu ad.",
+      "is_active": "True",
+      "created_at": "2020-04-01T15:56:47.627038-06:00",
+      "updated_at": "2020-04-01T15:56:47.627038-06:00"
+    }
+  }
+]

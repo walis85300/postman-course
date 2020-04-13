@@ -4,7 +4,7 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_HOST_AUTH_METHOD=trust
+      POSTGRES_HOST_AUTH_METHOD: trust
   web:
     image: postman-course_web_1
     build: .
@@ -12,6 +12,6 @@ services:
     volumes:
       - ./:/code
     ports:
-      - "8000:8000"
+      - '8000:8000'
     depends_on:
       - db
