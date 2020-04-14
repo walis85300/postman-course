@@ -40,3 +40,4 @@ This code is free, use it, change it, even you can send me pull requests. Maybe 
     - [Rick & Morty API](https://rickandmortyapi.com/api/character/)
     - [Repository with Public APIs](https://github.com/public-apis/public-apis)
 
+- Make `git pull` and follow [the steps](https://github.com/walis85300/postman-course#how-to-run-this-project)
